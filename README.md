@@ -39,3 +39,18 @@ Optionally, you can run this locally, by:
 2. Going to `animations/wave` directory.
 3. Opening the `index.html` file in any modern browser.
 
+## Wave
+
+<p align="center">
+  <img src="./docs/assets/hippo.png" width="256" />
+</p>
+
+### Demo:
+
+Check out the live animation on [CodePen](https://codepen.io/guillhermm/pen/JoKdyxz).
+
+Optionally, you can run this locally, by:
+1. Cloning this repository to your local machine.
+2. Going to `animations/hippopotamus` directory.
+3. Opening the `index.html` file in any modern browser.
+
