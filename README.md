@@ -21,6 +21,6 @@ Check out the live animation on [CodePen](https://codepen.io/guillhermm/pen/jErP
 
 Optionally, you can run this locally, by:
 1. Cloning this repository to your local machine.
-2. Going to `liquid-dance-shape` directory.
+2. Going to `animations/liquid-dance-shape` directory.
 3. Opening the `index.html` file in any modern browser.
 
