@@ -1,0 +1,79 @@
+body,
+html {
+  /* Dark background for contrast */
+  background-color: #1d1d1d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Container to center the animation */
+.dance-container {
+  position: relative;
+  width: 256px;
+  height: 256px;
+}
+
+/* The dancing liquid blob */
+.dance-shape {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.7), rgba(0, 255, 255, 0.7));
+  border-radius: 50%;
+  animation: dance 6s ease-in-out infinite, morph 8s ease-in-out infinite;
+  transform-origin: center;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+@media only screen and (min-width: 576px) {
+  .dance-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+  }
+}
+
+/* Keyframes for morphing the shape */
+@keyframes morph {
+  0%,
+  100% {
+    border-radius: 50%;
+  }
+
+  25% {
+    border-radius: 20% 60% 60% 20%;
+  }
+
+  50% {
+    border-radius: 10% 40% 40% 10%;
+  }
+
+  75% {
+    border-radius: 70% 30% 50% 30%;
+  }
+}
+
+/* Keyframes for dancing movement */
+@keyframes dance {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(-45%, -50%) rotate(45deg);
+  }
+
+  50% {
+    transform: translate(-50%, -45%) rotate(90deg);
+  }
+
+  75% {
+    transform: translate(-55%, -50%) rotate(135deg);
+  }
+}
