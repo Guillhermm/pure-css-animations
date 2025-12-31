@@ -1,0 +1,48 @@
+html, body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+}
+
+.gradient-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #ff6f61, #ffcc66, #66ccff, #33cc99);
+  background-size: 600% 600%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: gradientMove 15s ease infinite;
+}
+
+.gradient-background::after {
+  content: 'CSS Gradient Animation';
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 48px;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 1px 1px 8px #333;
+}
+
+@media only screen and (min-width: 576px) {
+  .gradient-background::after {
+    font-size: 56px;
+  }
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
