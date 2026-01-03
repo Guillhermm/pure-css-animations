@@ -9,55 +9,52 @@ body, html {
 
 .fluid-container {
   position: relative;
-  width: 80vmin;
-  height: 80vmin;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
-  border-radius: 50%;
-  box-shadow: 0.5rem 0.5rem 1.75em #0d0d0d;
-  transform: rotateZ(45deg);
 }
 
 .wave {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(135deg, rgba(0, 255, 255, 0.6) 25%, rgba(0, 102, 204, 0.8) 75%);
+  width: 200vw;
+  height: 200vw;
+  background: linear-gradient(45deg, rgba(0, 255, 255, 0.6) 25%, rgba(0, 102, 204, 0.8) 75%);
   border-radius: 45%;
-  animation: waveMovement 4s ease-in-out infinite;
+  animation: waveMovement 5s ease-in-out infinite;
   transform-origin: center;
   z-index: 1;
   opacity: 0.8;
-  margin-top: -35%;
-  margin-left: -35%;
+  margin-top: 0;
+  margin-left: -100%;
 }
 
 .wave::before {
   content: "";
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, rgba(0, 255, 255, 0.5) 25%, rgba(0, 102, 204, 0.7) 75%);
+  top: -100%;
+  left: -100%;
+  width: 600vw;
+  height: 600vw;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.5) 25%, rgba(0, 102, 204, 0.7) 75%);
   border-radius: 45%;
-  animation: waveRipple 4s ease-in-out infinite;
+  animation: waveRipple 5s ease-in-out infinite;
   z-index: -1;
 }
 
 /* Keyframe animation for fluid wave movement */
 @keyframes waveMovement {
   0% {
-    transform: rotate(0deg) translateY(0);
+    transform: rotate(45deg) translateY(0);
     opacity: 0.8;
   }
   50% {
-    transform: rotate(180deg) translateY(-30px);
+    transform: rotate(225deg) translateX(30px) translateY(30px);
     opacity: 1;
   }
   100% {
-    transform: rotate(360deg) translateY(0);
+    transform: rotate(405deg) translateY(0);
     opacity: 0.8;
   }
 }
