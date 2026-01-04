@@ -120,219 +120,184 @@ html, body {
 }
 
 @keyframes triangleParallelogram {
-  0% {
+  3%, 100% {
     top: 205px;
     left: 305px;
     transform: skew(-45deg);
   }
   /* Cat */
-  25% {
+  25%, 28% {
     top: 520px;
     left: 415px;
     transform: skew(-45deg);
   }
   /* Duck */
-  50% {
+  50%, 53% {
     top: 265px;
     left: 190px;
     transform: rotate(-45deg) skew(45deg);
   }
   /* Whale */
-  75% {
+  75%, 78% {
     top: 425px;
     left: 90px;
     transform: rotate(45deg) skew(-45deg);
   }
-  100% {
-    top: 205px;
-    left: 305px;
-    transform: skew(-45deg);
-  }
 }
 
 @keyframes triangleLarge1 {
-  0% {
+  3%, 100% {
     top: 387.42px;
     left: 241.42px;
     transform: rotate(45deg);
   }
   /* Cat */
-  25% {
+  25%, 28% {
     top: 290px;
     left: 140px;
     transform: rotate(135deg);
   }
   /* Duck */
-  50% {
+  50%, 53% {
     top: 350px;
     left: 260px;
     transform: rotate(270deg);
   }
   /* Whale */
-  75% {
+  75%, 78% {
     top: 310px;
     left: 60px;
     transform: rotate(90deg);
   }
-  100% {
-    top: 387.42px;
-    left: 241.42px;
-    transform: rotate(45deg);
-  }
 }
 
 @keyframes triangleLarge2 {
-  0% {
+  3%, 100% {
     top: 245px;
     left: 382px;
     transform: rotate(45deg);
   }
   /* Cat */
-  25% {
+  25%, 28% {
     top: 390px;
     left: 180px;
     transform: rotate(-90deg);
   }
   /* Duck */
-  50% {
+  50%, 53% {
     top: 250px;
     left: 300px;
     transform: rotate(-45deg);
   }
   /* Whale */
-  75% {
+  75%, 78% {
     top: 310px;
     left: 260px;
     transform: rotate(0deg);
   }
-  100% {
-    top: 245px;
-    left: 382px;
-    transform: rotate(45deg);
-  }
 }
 
 @keyframes triangleMedium {
-  0% {
+  3%, 100% {
     top: 205px;
     left: 200px;
     transform: rotate(180deg);
   }
   /* Cat */
-  25% {
+  25%, 28% {
     top: 280px;
     left: 170px;
     transform: rotate(135deg);
   }
   /* Duck */
-  50% {
+  50%, 53% {
     top: 180px;
     left: 190px;
     transform: rotate(225deg);
   }
   /* Whale */
-  75% {
+  75%, 78% {
     top: 125px;
     left: 460px;
     transform: rotate(45deg);
   }
-  100% {
-    top: 205px;
-    left: 200px;
-    transform: rotate(180deg);
-  }
 }
 
 @keyframes triangleSquare {
-  0% {
+  3%, 100% {
     top: 295px;
     left: 220px;
     transform: rotate(45deg);
   }
   /* Cat */
-  25% {
+  25%, 28% {
     top: 200px;
     left: 120px;
     transform: rotate(45deg);
   }
   /* Duck */
-  50% {
+  50%, 53% {
     top: 350px;
     left: 160px;
     transform: rotate(0);
   }
   /* Whale */
-  75% {
+  75%, 78% {
     top: 390px;
     left: 410px;
-    transform: rotate(45deg);
-  }
-  100% {
-    top: 295px;
-    left: 220px;
     transform: rotate(45deg);
   }
 }
 
 @keyframes triangleSmall1 {
-  0% {
+  3%, 100% {
     top: 365px;
     left: 150px;
     transform: rotate(315deg);
   }
   /* Cat */
-  25% {
+  25%, 28% {
     top: 130px;
     left: 50px;
     transform: rotate(315deg);
   }
   /* Duck */
-  50% {
+  50%, 53% {
     top: 150px;
     left: 260px;
     transform: rotate(270deg);
   }
   /* Whale */
-  75% {
+  75%, 78% {
     top: 320px;
     left: 340px;
     transform: rotate(45deg);
   }
-  100% {
-    top: 365px;
-    left: 150px;
-    transform: rotate(315deg);
-  }
 }
 
 @keyframes triangleSmall2 {
-  0% {
+  3%, 100% {
     top: 225px;
     left: 290px;
     transform: rotate(315deg);
   }
   /* Cat */
-  25% {
+  25%, 28% {
     top: 130px;
     left: 190px;
     transform: rotate(45deg);
   }
   /* Duck */
-  50% {
+  50%, 53% {
     top: 450px;
     left: 160px;
     transform: rotate(180deg);
   }
   /* Whale */
-  75% {
+  75%, 78% {
     top: 320px;
     left: 480px;
     transform: rotate(45deg);
-  }
-  100% {
-    top: 225px;
-    left: 290px;
-    transform: rotate(315deg);
   }
 }
 
