@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dijkstra's Algorithm Animation, by Guilherme Zeni.</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="intro">
+      <h1>Dijkstra's Algorithm</h1>
+      <p>What's the shortest path to go from A to G?</p>
+    </div>
+  </div>
+  <div class="graph-container">
+    <div class="graph">
+      <!-- Nodes -->
+      <div class="node" id="node-a" data-label="0">A</div>
+      <div class="node" id="node-b" data-label="∞">B</div>
+      <div class="node" id="node-c" data-label="∞">C</div>
+      <div class="node" id="node-d" data-label="∞">D</div>
+      <div class="node" id="node-e" data-label="∞">E</div>
+      <div class="node" id="node-f" data-label="∞">F</div>
+      <div class="node" id="node-g" data-label="∞">G</div>
+      <!-- Edges -->
+      <div class="edge" id="edge-ab"></div>
+      <div class="edge" id="edge-ac"></div>
+      <div class="edge" id="edge-bd"></div>
+      <div class="edge" id="edge-be"></div>
+      <div class="edge" id="edge-cd"></div>
+      <div class="edge" id="edge-ce"></div>
+      <div class="edge" id="edge-df"></div>
+      <div class="edge" id="edge-ef"></div>
+      <div class="edge" id="edge-fg"></div>
+      <div class="edge" id="edge-eg"></div>
+      <!-- Weights -->
+      <div class="weight" id="weight-ab">4</div>
+      <div class="weight" id="weight-ac">2</div>
+      <div class="weight" id="weight-bd">8</div>
+      <div class="weight" id="weight-be">3</div>
+      <div class="weight" id="weight-cd">5</div>
+      <div class="weight" id="weight-ce">1</div>
+      <div class="weight" id="weight-df">6</div>
+      <div class="weight" id="weight-ef">7</div>
+      <div class="weight" id="weight-fg">1</div>
+      <div class="weight" id="weight-eg">9</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-color visited"></div>
+        <div class="legend-label">Visited</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color current"></div>
+        <div class="legend-label">Current</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color shortest"></div>
+        <div class="legend-label">Shortest Path</div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+

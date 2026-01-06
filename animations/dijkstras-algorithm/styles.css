@@ -1,0 +1,521 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #111;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 535px;
+  padding: 0 1rem;
+}
+
+h1 {
+  color: rgba(255, 255, 255, .87);
+}
+
+.intro {
+  text-align: center;
+}
+
+.intro p {
+  color: rgba(255, 255, 255, .6);
+}
+
+.graph-container {
+  padding: 1rem;
+  scale: .5;
+  /* Dirty hack to handle height scale decrease */
+  margin: -7.5rem 0;
+}
+
+.graph {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  animation: fadeIn 1s forwards ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  25%, 100% {
+    opacity: 1;
+  }
+}
+
+/* Nodes */
+.node {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #242424;
+  color: rgba(255, 255, 255, .87);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px solid transparent;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+  transition: all 1.5s ease-in-out;
+  z-index: 10;
+  animation: node 20s forwards;
+}
+
+/* Node positions and delay to animate */
+#node-a {
+  top: 0;
+  left: 225px;
+  animation-name: nodeShortest;
+  animation-delay: 0s;
+}
+
+#node-b {
+  top: 125px;
+  left: 110px;
+  animation-delay: 1.5s;
+}
+
+#node-c {
+  top: 125px;
+  right: 110px;
+  animation-name: nodeShortest;
+  animation-delay: 3s;
+}
+
+#node-d {
+  top: 280px;
+  left: 50px;
+  animation-delay: 4.5s;
+}
+
+#node-e {
+  top: 280px;
+  right: 50px;
+  animation-name: nodeShortest;
+  animation-delay: 5.5s;
+}
+
+#node-f {
+  bottom: 0;
+  left: 110px;
+  animation-name: nodeShortest;
+  animation-delay: 7s;
+}
+
+#node-g {
+  bottom: 0;
+  right: 110px;
+  animation-name: nodeShortestTarget;
+  animation-delay: 7.5s;
+}
+
+/* Color changes during animation */
+@keyframes node {
+  0% {
+    background: #242424;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+    scale: 1;
+  }
+  5%, 7% {
+    background: #3700b3;
+    border-color: rgba(255, 255, 255, .87);
+    box-shadow: 2px 2px 60px rgba(0, 0, 0, .75);
+    scale: 1.1;
+  }
+  10%, 100% {
+    background: #cf6679;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+    scale: 1;
+  }
+}
+
+/* Highlight shortest path node (A->C->E->F->G) */
+@keyframes nodeShortest {
+  0% {
+    background: #242424;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+    color: rgba(255, 255, 255, .87);
+    scale: 1;
+  }
+  5%, 7% {
+    background: #3700b3;
+    border-color: rgba(255, 255, 255, .87);
+    box-shadow: 2px 2px 60px rgba(0, 0, 0, .75);
+    color: rgba(255, 255, 255, .87);
+    scale: 1.1;
+  }
+  10%, 50% {
+    background: #cf6679;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+    color: rgba(255, 255, 255, .87);
+    scale: 1;
+  }
+  55%, 100% {
+    background: #03dac6;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+    color: #1e1e1e;
+    scale: 1;
+  }
+}
+
+@keyframes nodeShortestTarget {
+  0%, 50% {
+    background: #242424;
+    color: rgba(255, 255, 255, .87);
+  }
+  55%, 100% {
+    background: #03dac6;
+    color: #1e1e1e;
+  }
+}
+
+/* Node labels */
+.node::after {
+  content: attr(data-label);
+  position: absolute;
+  top: -30px;
+  font-size: 1.5rem;
+  color: #bb86fc;
+  font-weight: 600;
+}
+
+
+#node-b::after {
+  animation: nodeLabelB 20s forwards ease-in-out;
+  animation-delay: 0.5s;
+}
+
+#node-c::after {
+  animation: nodeLabelC 20s forwards ease-in-out;
+  animation-delay: 1s;
+}
+
+#node-d::after {
+  animation: nodeLabelD 20s forwards ease-in-out;
+  animation-delay: 2s;
+}
+
+#node-e::after {
+  animation: nodeLabelE 20s forwards ease-in-out;
+  animation-delay: 2.5s;
+}
+
+#node-f::after {
+  animation: nodeLabelF 20s forwards ease-in-out;
+  animation-delay: 5s;
+}
+
+#node-g::after {
+  animation: nodeLabelG 20s forwards ease-in-out;
+  animation-delay: 6.5s;
+}
+
+@keyframes nodeLabelB {
+  0% {
+    content: attr(data-label);
+  }
+  5%, 100% {
+    content: '4';
+  }
+}
+
+@keyframes nodeLabelC {
+  0% {
+    content: attr(data-label);
+  }
+  5%, 100% {
+    content: '2';
+  }
+}
+
+@keyframes nodeLabelD {
+  0% {
+    content: attr(data-label);
+  }
+  5% {
+    content: '12';
+  }
+  15%, 100% {
+    content: '7';
+  }
+}
+
+@keyframes nodeLabelE {
+  0% {
+    content: attr(data-label);
+  }
+  5% {
+    content: '7';
+  }
+  15%, 100% {
+    content: '3';
+  }
+}
+
+@keyframes nodeLabelF {
+  0% {
+    content: attr(data-label);
+  }
+  5% {
+    content: '13';
+  }
+  10%, 100% {
+    content: '10';
+  }
+}
+
+@keyframes nodeLabelG {
+  0% {
+    content: attr(data-label);
+  }
+  5% {
+    content: '12';
+  }
+  10%, 100% {
+    content: '11';
+  }
+}
+
+/* Edges */
+.edge {
+  position: absolute;
+  background: rgba(255,255,255,.6);
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+  transition: all 1.5s ease;
+  z-index: 1;
+  animation: edge 20s forwards;
+}
+
+/* Edge positions and animation delay */
+#edge-ab {
+  clip-path: polygon(250px 15px, 125px 160px, 135px 160px, 260px 15px);
+  -webkit-clip-path: polygon(250px 15px, 125px 160px, 135px 160px, 260px 15px);
+  animation-delay: 0.5s;
+}
+
+#edge-ac {
+  clip-path: polygon(240px 15px, 365px 160px, 375px 160px, 250px 15px);
+  -webkit-clip-path: polygon(240px 15px, 365px 160px, 375px 160px, 250px 15px);
+  animation-delay: 1s;
+}
+
+#edge-bd {
+  clip-path: polygon(125px 160px, 65px 295px, 75px 295px, 135px 160px);
+  -webkit-clip-path: polygon(125px 160px, 65px 295px, 75px 295px, 135px 160px);
+  animation-delay: 2s;
+
+}
+
+#edge-be {
+  clip-path: polygon(135px 160px, 415px 305px, 415px 295px, 135px 150px);
+  -webkit-clip-path: polygon(135px 160px, 415px 305px, 415px 295px, 135px 150px);
+  animation-delay: 2.5s;
+
+}
+
+#edge-cd {
+  clip-path: polygon(365px 160px, 65px 305px, 65px 295px, 365px 150px);
+  -webkit-clip-path: polygon(365px 160px, 65px 305px, 65px 295px, 365px 150px);
+  animation-delay: 3.5s;
+}
+
+#edge-ce {
+  clip-path: polygon(365px 160px, 415px 305px, 425px 305px, 375px 160px);
+  -webkit-clip-path: polygon(365px 160px, 415px 305px, 425px 305px, 375px 160px);
+  animation-delay: 4s;
+}
+
+#edge-df {
+  clip-path: polygon(65px 295px, 125px 475px, 135px 475px, 75px 295px);
+  -webkit-clip-path: polygon(65px 295px, 125px 475px, 135px 475px, 75px 295px);
+  animation-delay: 5s;
+}
+
+#edge-ef {
+  clip-path: polygon(415px 300px, 125px 465px, 125px 475px, 415px 310px);
+  -webkit-clip-path: polygon(415px 300px, 125px 465px, 125px 475px, 415px 310px);
+  animation-delay: 6s;
+}
+
+#edge-fg {
+  clip-path: polygon(125px 475px, 375px 475px, 375px 465px, 125px 465px);
+  -webkit-clip-path: polygon(125px 475px, 375px 475px, 375px 465px, 125px 465px);
+  animation-delay: 7.5s;
+}
+
+#edge-eg {
+  clip-path: polygon(415px 305px, 365px 475px, 375px 475px, 425px 305px);
+  -webkit-clip-path: polygon(415px 305px, 365px 475px, 375px 475px, 425px 305px);
+  animation-delay: 6.5s;
+}
+
+/* Highlight shortest path edges (A->C->E->F->G) */
+#edge-ac, #edge-ce, #edge-ef, #edge-fg {
+  animation-name: edgeShortest;
+}
+
+@keyframes edge {
+  0% {
+    background: rgba(255,255,255,.6);
+  }
+  5%, 100% {
+    background: #3700b3;
+  }
+}
+
+/* Edge animation for shortest path */
+@keyframes edgeShortest {
+  0% {
+    background: rgba(255, 255, 255, .6);
+  }
+  5%, 50% {
+    background: #3700b3;
+  }
+  55%, 100% {
+    background: #03dac6;
+  }
+}
+ 
+/* Edge weights */
+.weight {
+  position: absolute;
+  color: rgba(255, 255, 255, .87);;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#weight-ab {
+  top: 60px;
+  left: 175px;
+}
+
+#weight-ac {
+  top: 60px;
+  right: 175px;
+}
+
+#weight-bd {
+  top: 200px;
+  left: 85px;
+}
+
+#weight-be {
+  top: 190px;
+  left: 180px;
+}
+
+#weight-cd {
+  top: 190px;
+  right: 180px;
+}
+
+#weight-ce {
+  top: 200px;
+  right: 85px;
+}
+
+#weight-df {
+  top: 390px;
+  left: 85px;
+}
+
+#weight-ef {
+  top: 390px;
+  left: 280px;
+}
+
+#weight-fg {
+  top: 480px;
+  left: 250px;
+}
+
+#weight-eg {
+  top: 390px;
+  right: 85px;
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  padding: 1.25rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.legend-color {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 6px;
+}
+
+.legend-color.visited {
+  background: #cf6679;
+}
+
+.legend-color.current {
+  background: #3700b3;
+}
+
+.legend-color.shortest {
+  background: #03dac6;
+}
+
+.legend-label {
+  font-size: 1rem;
+  color: #2d3748;
+  font-weight: 500;
+}
+
+@media (min-width: 375px) {
+  .graph-container {
+    scale: .6;
+    margin: -6.25rem 0;
+  }
+}
+
+@media (min-width: 475px) {
+  .graph-container {
+    scale: .75;
+    margin: -4.5rem 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .graph-container {
+    scale: 1;
+    margin: 0;
+  }
+}
