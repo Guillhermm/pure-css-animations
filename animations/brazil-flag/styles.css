@@ -1,0 +1,482 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #1d1d1d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, sans-serif;
+  height: 100vh;
+}
+
+.flag {
+  width: 400px;
+  height: 280px;
+  background: #009b3a;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.flag:hover {
+  transform: scale(1.01);
+  filter: brightness(1.05);
+}
+
+.flag:hover .diamond {
+  transform: translate(-50%, -50%) scale(1.01);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .25), 0 0 12px rgba(0, 0, 0, .75);
+}
+
+.flag:hover .circle {
+  transform: translate(-50%, -50%) scale(1.02);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .2), 0 0 12px rgba(0, 39, 118, .8);
+}
+
+.flag:hover .char {
+  opacity: 1;
+  scale: 1.1;
+}
+
+.flag:hover .stars {
+  transform: translate(-50%, -50%) scale(1.03);
+}
+
+.diamond,
+.circle,
+.stars {
+  transition: transform .3s cubic-bezier(.2, .6, .2, 1);
+}
+
+.diamond {
+  position: absolute;
+  width: 332px;
+  height: 212px;
+  background: #ffdf00;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  clip-path: polygon(
+    50% 0%,
+    100% 50%,
+    50% 100%,
+    0% 50%
+  );
+}
+
+.diamond:hover {
+  filter: brightness(1.1);
+}
+
+.circle {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: #002776;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+.white-stripe {
+  position: absolute;
+  top: 58px;
+  left: 50%;
+  margin: auto;
+  width: 300px;
+  height: 230px;
+  border: 10px solid white;
+  border-bottom: transparent;
+  border-radius: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  overflow: hidden;
+}
+
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+}
+
+.char {
+  position: absolute;
+  color: #009b3a;
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all .4s ease;
+}
+
+.char-1 {
+  top: 42px;
+  left: 6px;
+}
+
+.char-2 {
+  top: 40px;
+  left: 15px;
+  transform: rotate(-4deg);
+}
+
+.char-3 {
+  top: 39px;
+  left: 23px;
+  transform: rotate(-4deg);
+}
+
+.char-4 {
+  top: 39px;
+  left: 32px;
+  transform: rotate(1deg);
+}
+
+.char-5 {
+  top: 39px;
+  left: 40px;
+  transform: rotate(4deg);
+}
+
+.char-6 {
+  top: 41px;
+  left: 55px;
+  transform: rotate(12deg);
+}
+
+.char-7 {
+  top: 44px;
+  left: 69px;
+  transform: rotate(19deg);
+}
+
+.char-8 {
+  top: 46.5px;
+  left: 77px;
+  transform: rotate(20deg);
+}
+
+.char-9 {
+  top: 49.5px;
+  left: 84px;
+  transform: rotate(22deg);
+}
+
+.char-10 {
+  top: 53.5px;
+  left: 93px;
+  transform: rotate(24deg);
+}
+
+.char-11 {
+  top: 57px;
+  left: 101px;
+  transform: rotate(26deg);
+}
+
+.char-12 {
+  top: 61px;
+  left: 108px;
+  transform: rotate(28deg);
+}
+
+.char-13 {
+  top: 66px;
+  left: 116px;
+  transform: rotate(30deg);
+}
+
+.char-14 {
+  top: 71px;
+  left: 123px;
+  transform: rotate(32deg);
+}
+
+.char-15 {
+  top: 76px;
+  left: 129px;
+  transform: rotate(34deg);
+}
+
+.stars {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  background: transparent;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.star {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  clip-path: polygon(50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.star {
+  animation: twinkle 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, .75));
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: .75; }
+  50% { opacity: 1; }
+}
+
+.star-container:nth-child(odd) .star {
+  animation-delay: 1.5s;
+}
+
+.star-container:nth-child(3n) .star {
+  animation-delay: 3s;
+}
+
+.star-container {
+  position: absolute;
+  transition: transform .3s ease-in-out;
+}
+
+.star-container:hover {
+  transform: scale(1.25);
+}
+
+/* Tooltip (state name) */
+.star-container::after {
+  content: attr(data-state);
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, .5);
+  border-radius: 1px;
+  color: #fff;
+  font-size: .5rem;
+  padding: .25rem .5rem;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity .3s ease-in-out;
+}
+
+.star-container:hover::after {
+  opacity: 1;
+}
+
+/* Star Positions */
+/* These positions are artistic, not astronomical */
+.star-container.pa {
+  top: 46px;
+  left: 89px;
+}
+
+.star-container.am {
+  top: 55px;
+  left: 10px;
+}
+
+.star-container.ms {
+  top: 71px;
+  left: 41px;
+}
+
+.star-container.ac {
+  top: 65px;
+  left: 87px;
+}
+
+.star-container.mt {
+  top: 84px;
+  left: 16px;
+}
+
+.star-container.ap {
+  top: 91px;
+  left: 8px;
+}
+
+.star-container.ro {
+  top: 81px;
+  left: 25px;
+}
+
+.star-container.rr {
+  top: 92px;
+  left: 31px;
+}
+
+.star-container.to {
+  top: 99px;
+  left: 29px;
+}
+
+.star-container.go {
+  top: 104px;
+  left: 39px;
+}
+
+.star-container.ba {
+  top: 79px;
+  left: 68px;
+}
+
+.star-container.mg {
+  top: 86px;
+  left: 61px;
+}
+
+.star-container.es {
+  top: 91px;
+  left: 65px;
+}
+
+.star-container.sp {
+  top: 99px;
+  left: 67px;
+}
+
+.star-container.rj {
+  top: 85px;
+  left: 76px;
+}
+
+.star-container.pi {
+  top: 91px;
+  left: 116px;
+}
+
+.star-container.ma {
+  top: 93px;
+  left: 127px;
+}
+
+.star-container.ce {
+  top: 99px;
+  left: 120px;
+}
+
+.star-container.rn {
+  top: 104px;
+  left: 115px;
+}
+
+.star-container.pb {
+  top: 108px;
+  left: 110px;
+}
+
+.star-container.pe {
+  top: 107px;
+  left: 103px;
+}
+
+.star-container.al {
+  top: 114px;
+  left: 103px;
+}
+
+.star-container.se {
+  top: 121px;
+  left: 103px;
+}
+
+.star-container.sc {
+  top: 109px;
+  left: 95px;
+}
+
+.star-container.rs {
+  top: 115px;
+  left: 89px;
+}
+
+.star-container.pr {
+  top: 107px;
+  left: 84px;
+}
+
+.star-container.df {
+  top: 124px;
+  left: 69px;
+}
+
+/* Star sizes (some states are equal) */
+.star-container.df .star {
+  width: 2px;
+  height: 2px;
+}
+
+.star-container.ro .star,
+.star-container.es .star {
+  width: 3px;
+  height: 3px;
+}
+
+.star-container.ac .star,
+.star-container.to .star,
+.star-container.mg .star,
+.star-container.ma .star,
+.star-container.pb .star,
+.star-container.se .star,
+.star-container.pe .star,
+.star-container.sc .star,
+.star-container.pr .star {
+  width: 4px;
+  height: 4px;
+}
+
+.star-container.ms .star,
+.star-container.ap .star,
+.star-container.rr .star,
+.star-container.ba .star,
+.star-container.rj .star,
+.star-container.ce .star,
+.star-container.rn .star,
+.star-container.al .star,
+.star-container.rs .star {
+  width: 4.5px;
+  height: 4.5px;
+}
+
+.star-container.pa .star {
+  width: 5px;
+  height: 5px;
+}
+
+.star-container.am .star,
+.star-container.mt .star,
+.star-container.go .star,
+.star-container.sp .star,
+.star-container.pi .star {
+  width: 6px;
+  height: 6px;
+}
+
+@media (min-width: 640px) {
+  .flag {
+    scale: 1.5;
+  }
+}
+
+@media (min-width: 1024px) {
+  .flag {
+    scale: 2;
+  }
+}
