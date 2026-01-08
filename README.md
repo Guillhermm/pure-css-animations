@@ -1,56 +1,25 @@
 # Pure CSS Animations
 
-This repository contains few animations I have created over the years to improve my skills in HMTL + CSS.
+A collection of small animations and visual experiments built using only HTML and CSS.
 
-## Liquid Dance Shape
+This repository is focused on exploring motion, shape, and visual behavior without any JavaScript.
+Each animation is self-contained and lives in its own directory.
 
-This animation creates a "liquid dance" effect using keyframe animations. The animation features a liquid blob that changes shape and moves in a fluid, dance-like motion, using pure CSS with no JavaScript.
+No JavaScript. No frameworks. No external libraries.
 
-<p align="center">
-  <img src="./docs/assets/liquid-dance-shape.png" width="256" />
-</p>
+## Animations
 
-### Features:
-- **Morphing Shape**: The blob changes its shape dynamically, shifting from round to more organic forms.
-- **Dancing Motion**: The shape moves in a circular pattern, simulating a fluid dance.
-- **Gradient Color Effects**: The shape is filled with a vibrant, glowing radial gradient, making it visually striking against a dark background.
+All animations are located in the `animations/` directory.
 
-### Demo:
+Each folder contains:
 
-Check out the live animation on [CodePen](https://codepen.io/guillhermm/pen/jErPqLp).
+- a minimal HTML file
+- a CSS file with the animation logic
+- assets and/or documentation
 
-Optionally, you can run this locally, by:
-1. Cloning this repository to your local machine.
-2. Going to `animations/liquid-dance-shape` directory.
-3. Opening the `index.html` file in any modern browser.
+The animations are also available as live demos on CodePen.
 
-## Wave
+## Notes
 
-<p align="center">
-  <img src="./docs/assets/wave.png" width="256" />
-</p>
-
-### Demo:
-
-Check out the live animation on [CodePen](https://codepen.io/guillhermm/pen/WbxvwPa).
-
-Optionally, you can run this locally, by:
-1. Cloning this repository to your local machine.
-2. Going to `animations/wave` directory.
-3. Opening the `index.html` file in any modern browser.
-
-## Wave
-
-<p align="center">
-  <img src="./docs/assets/hippo.png" width="256" />
-</p>
-
-### Demo:
-
-Check out the live animation on [CodePen](https://codepen.io/guillhermm/pen/JoKdyxz).
-
-Optionally, you can run this locally, by:
-1. Cloning this repository to your local machine.
-2. Going to `animations/hippopotamus` directory.
-3. Opening the `index.html` file in any modern browser.
-
+These animations were created as experiments and learning exercises.
+The code prioritizes clarity and visual exploration over abstraction or reuse.
