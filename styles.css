@@ -20,10 +20,9 @@ header {
 
 header h1 {
   font-size: 2.5rem;
+  line-height: 1.1;
   margin-bottom: 0.5rem;
-  background: #ff6b6b;
-  -webkit-background-clip: text;
-  color: transparent;
+  color: #ff6b6b;
 }
 
 header p {
@@ -72,8 +71,11 @@ header p {
 
 .links {
   display: flex;
-  justify-content: space-around;
-  padding: 0.75rem 1rem 1rem 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .links a {
@@ -83,12 +85,15 @@ header p {
   padding: 0.5rem 1rem;
   border-radius: 6px;
   font-size: 0.9rem;
-  transition: all 0.2s;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
 }
 
 .links a:hover {
   background: #555;
-  transform: scale(1.05);
 }
 
 footer {
