@@ -21,7 +21,7 @@ header {
 header h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #ffd166, #bb86fc);
+  background: #ff6b6b;
   -webkit-background-clip: text;
   color: transparent;
 }
@@ -54,6 +54,9 @@ header p {
 .card img {
   width: 100%;
   display: block;
+  object-fit: cover;
+  /* Keeps fixed radio */
+  aspect-ratio: 4 / 3;
 }
 
 .card h2 {
