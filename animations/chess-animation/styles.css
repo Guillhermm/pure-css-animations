@@ -1,0 +1,326 @@
+:root {
+  --square: 1.75rem;
+  --board-padding: 1rem;
+}
+
+html, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: #b58863;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: .25rem;
+  box-shadow: 0 .25rem .5rem rgba(0, 0, 0, .1);
+}
+
+.board-wrapper {
+  position: relative;
+  padding: var(--board-padding);
+}
+
+.coordinates {
+  position: absolute;
+}
+
+.coordinates.vertical {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 1rem;
+  bottom: 1rem;
+}
+
+.coordinates.vertical.left {
+  left: 0;
+}
+
+.coordinates.vertical.right {
+  right: 0;
+}
+
+.coordinates.vertical > div {
+  width: var(--board-padding);
+  height: var(--square);
+}
+
+.coordinates.horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: var(--board-padding);
+  right: var(--board-padding);
+}
+
+.coordinates.horizontal.top {
+  top: 0;
+}
+
+.coordinates.horizontal.bottom {
+  bottom: 0;
+}
+
+.coordinates.horizontal > div {
+  width: var(--square);
+  height: var(--board-padding);
+}
+
+.coordinates > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  line-height: 1;
+}
+
+.chess-board {
+  display: grid;
+  grid-template-columns: repeat(8, var(--square));
+  grid-template-rows: repeat(8, var(--square));
+  gap: 0;
+  margin: 0;
+  position: relative;
+  border: .15rem solid #333;
+}
+
+.square {
+  width: var(--square);
+  height: var(--square);
+}
+
+.square.white { background: #f0d9b5; }
+.square.black { background: #b58863; }
+
+.piece {
+  position: absolute;
+  width: var(--square);
+  height: var(--square);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  transition: all .4s ease;
+  user-select: none;
+}
+
+.piece.white { color: #fff; text-shadow: 1px 1px 2px #000; }
+.piece.black { color: #000; text-shadow: 1px 1px 2px #fff; }
+
+/* Position black pieces (row 1) */
+#black-rook-1, #black-knight-1, #black-bishop-1, #black-queen, #black-king, #black-bishop-2, #black-rook-2 {
+  top: calc(var(--square) * 0);
+}
+
+#black-rook-1 { left: calc(var(--square) * 0) }
+#black-knight-1 { left: calc(var(--square) * 1) }
+#black-bishop-1 { left: calc(var(--square) * 2) }
+#black-queen { left: calc(var(--square) * 3) }
+#black-king { left: calc(var(--square) * 4) }
+#black-bishop-2 { left: calc(var(--square) * 5) }
+#black-knight-2 { left: calc(var(--square) * 6) }
+#black-rook-2 { left: calc(var(--square) * 7) }
+
+/* Position black pawns (row 2) */
+#black-pawn-1, #black-pawn-2, #black-pawn-3, #black-pawn-4, #black-pawn-5, #black-pawn-6, #black-pawn-7, #black-pawn-8 {
+  top: calc(var(--square) * 1);
+}
+
+#black-pawn-1 { left: calc(var(--square) * 0) }
+#black-pawn-2 { left: calc(var(--square) * 1) }
+#black-pawn-3 { left: calc(var(--square) * 2) }
+#black-pawn-4 { left: calc(var(--square) * 3) }
+#black-pawn-5 { left: calc(var(--square) * 4) }
+#black-pawn-6 { left: calc(var(--square) * 5) }
+#black-pawn-7 { left: calc(var(--square) * 6) }
+#black-pawn-8 { left: calc(var(--square) * 7) }
+
+/* Position white pawns (row 7) */
+#white-pawn-1, #white-pawn-2, #white-pawn-3, #white-pawn-4, #white-pawn-5, #white-pawn-6, #white-pawn-7, #white-pawn-8 {
+  top: calc(var(--square) * 6);
+}
+
+#white-pawn-1 { left: calc(var(--square) * 0) }
+#white-pawn-2 { left: calc(var(--square) * 1) }
+#white-pawn-3 { left: calc(var(--square) * 2) }
+#white-pawn-4 { left: calc(var(--square) * 3) }
+#white-pawn-5 { left: calc(var(--square) * 4) }
+#white-pawn-6 { left: calc(var(--square) * 5) }
+#white-pawn-7 { left: calc(var(--square) * 6) }
+#white-pawn-8 { left: calc(var(--square) * 7) }
+
+/* Position white pieces (row 8) */
+#white-rook-1, #white-knight-1, #white-bishop-1, #white-queen, #white-king, #white-bishop-2, #white-knight-2, #white-rook-2 {
+  top: calc(var(--square) * 7);
+}
+
+#white-rook-1 { left: calc(var(--square) * 0) }
+#white-knight-1 { left: calc(var(--square) * 1) }
+#white-bishop-1 { left: calc(var(--square) * 2) }
+#white-queen { left: calc(var(--square) * 3) }
+#white-king { left: calc(var(--square) * 4) }
+#white-bishop-2 { left: calc(var(--square) * 5) }
+#white-knight-2 { left: calc(var(--square) * 6) }
+#white-rook-2 { left: calc(var(--square) * 7) }
+
+/* Game animations */
+#white-pawn-6 {
+  animation: whiteMove1 1s forwards; /* f3 */
+  animation-delay: 1s;
+}
+
+@keyframes whiteMove1 {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(var(--square) * -1));
+  }
+}
+
+#black-pawn-5 {
+  animation: blackMove1 1s forwards; /* e6 */
+  animation-delay: 2s;
+}
+
+@keyframes blackMove1 {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(var(--square) * 2));
+  }
+}
+
+#white-pawn-7 {
+  animation: whiteMove2 1s forwards; /* g4 */
+  animation-delay: 3s;
+}
+
+@keyframes whiteMove2 {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(var(--square) * -2));
+  }
+}
+
+#black-queen {
+  animation: blackMove2 1s forwards;  /* Qh4# */
+  animation-delay: 4s;
+}
+
+@keyframes blackMove2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(calc(var(--square) * 4), calc(var(--square) * 4));
+  }
+}
+
+@media (min-width: 415px) {
+  :root {
+    --square: 2rem;
+    --board-padding: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .chess-board {
+    border-width: .2rem;
+  }
+
+  .coordinates > div {
+    font-size: 1rem;
+  }
+
+  .piece {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 576px) {
+  :root {
+    --square: 3rem;
+    --board-padding: 1.75rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  .chess-board {
+    border-width: .25rem;
+  }
+
+  .coordinates > div {
+    font-size: 1.25rem;
+  }
+
+  .piece {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 640px) {
+  :root {
+    --square: 3.5rem;
+    --board-padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .chess-board {
+    border-width: .25rem;
+  }
+
+  .coordinates > div {
+    font-size: 1.25rem;
+  }
+
+  .piece {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --square: 4rem;
+    --board-padding: 2rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  .piece {
+    font-size: 2.5rem;
+  }
+}
