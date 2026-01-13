@@ -11,6 +11,10 @@ No frameworks. No build tools. No dependencies.
   An interactive, animated representation of the Brazilian flag using pure HTML and CSS.  
   **Path:** `animations/brazil-flag/`
 
+- **Chess Animation (Fool’s Mate)**
+  A CSS-only chessboard animation recreating the Fool’s Mate, the fastest possible checkmate in chess.
+  **Path:** `animations/chess-animation/`
+
 - **Dark Theme**  
   A modern, CSS-only dark mode demo with a theme toggle implemented entirely with CSS variables.  
   **Path:** `animations/dark-theme/`
