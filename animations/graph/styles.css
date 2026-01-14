@@ -1,0 +1,225 @@
+:root {
+  --graph-width: 700px;
+  --graph-height: 500px;
+  --node-size: 1rem;
+  --node-size-half: .5rem;
+}
+
+/* Base */
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #0b1c24, #000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.graph {
+  position: relative;
+  width: var(--graph-width);
+  height: var(--graph-height);
+  animation: cameraDrift 20s ease-in-out infinite;
+
+}
+
+@keyframes cameraDrift {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(1.05) translate(-1rem, -.5rem);
+  }
+}
+/* Nodes */
+.node {
+  position: absolute;
+  width: var(--node-size);
+  height: var(--node-size);
+  border-radius: 50%;
+  background: radial-gradient(circle, #7fffd4, #00ffd5);
+  box-shadow:
+    0 0 8px rgba(0, 255, 213, .9),
+    0 0 22px rgba(0, 255, 213, .6);
+  transform-origin: 0;
+  animation: nodePulse 3.5s infinite ease-in-out;
+}
+
+.node:nth-child(2n)  { animation-delay: 0.6s; }
+.node:nth-child(3n) { animation-delay: 1.2s; }
+
+/* Edges */
+.edges {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.edge {
+  position: absolute;
+  height: 2px;
+  background:
+    linear-gradient(90deg,
+      transparent,
+      rgba(0, 255, 213, .9),
+      transparent);
+  transform-origin: left center;
+  animation:
+    edgeFlow 2.8s linear infinite,
+    edgeDrift 6s ease-in-out infinite;
+  opacity: 0.75;
+  filter: drop-shadow(0 0 6px rgba(0, 255, 213, .6));
+}
+
+.edge:nth-child(3n)  { animation-duration: 2.4s; }
+.edge:nth-child(4n)  { animation-duration: 3.1s; }
+
+/* Animations */
+@keyframes nodePulse {
+  0% {
+    transform: scale(1);
+    box-shadow:
+      0 0 6px rgba(0, 255, 213, .6),
+      0 0 18px rgba(0, 255, 213, .4);
+  }
+
+  45% {
+    transform: scale(1.5);
+    box-shadow:
+      0 0 10px rgba(0, 255, 213, 1),
+      0 0 28px rgba(0, 255, 213, .8);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 6px rgba(0, 255, 213, .6),
+      0 0 18px rgba(0, 255, 213, .4);
+  }
+}
+
+@keyframes edgeDrift {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(0, 255, 213, .6));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 10px rgba(0, 255, 213, .9));
+  }
+}
+
+@keyframes edgeFlow {
+  0% {
+    background-position: 0 0;
+    opacity: .45;
+  }
+
+  50% {
+    opacity: .75;
+  }
+
+  100% {
+    background-position: 1rem 0;
+    opacity: .45;
+  }
+}
+
+/* Node Positions */
+.n1  { top: 0%;   left: 0%; }
+.n2  { top: 25%;  left: 0%; }
+.n3  { top: 50%;  left: 0%; }
+.n4  { top: 75%;  left: 0%; }
+.n5  { top: 100%; left: 0%; }
+
+.n6  { top: 0%;   left: 100%; }
+.n7  { top: 25%;  left: 100%; }
+.n8  { top: 50%;  left: 100%; }
+.n9  { top: 75%;  left: 100%; }
+.n10 { top: 100%; left: 100%; }
+
+/* Horizontal Edges */
+.e1, .e2, .e3, .e4, .e5 {
+  width: var(--graph-width);
+  left: calc(0% + var(--node-size-half));
+}
+
+.e1 { top: calc(0%   + var(--node-size-half)); }
+.e2 { top: calc(25%  + var(--node-size-half)); }
+.e3 { top: calc(50%  + var(--node-size-half)); }
+.e4 { top: calc(75%  + var(--node-size-half)); }
+.e5 { top: calc(100% + var(--node-size-half)); }
+
+/* Diagonal Edge Shared Left */
+.e6, .e7, .e8, .e9,
+.e10, .e11, .e12, .e13,
+.e14, .e15, .e16, .e17,
+.e18, .e19, .e20, .e21,
+.e22, .e23, .e24, .e25 {
+  left: calc(0% + var(--node-size-half));
+}
+
+/* Diagonal Edge Width Groups */
+.e6, .e10, .e11, .e15, .e16, .e20, .e21, .e25 {
+  width: calc(sqrt(pow(700, 2) + pow(125, 2)) * 1px);
+}
+
+.e7, .e12, .e14, .e17, .e19, .e24 {
+  width: calc(sqrt(pow(700, 2) + pow(250, 2)) * 1px);
+}
+
+.e8, .e13, .e18, .e23 {
+  width: calc(sqrt(pow(700, 2) + pow(375, 2)) * 1px);
+}
+
+.e9, .e22 {
+  width: calc(sqrt(pow(700, 2) + pow(500, 2)) * 1px);
+}
+
+/* Diagonal Edge Rows */
+.e6, .e7, .e8, .e9 {
+  top: calc(0% + var(--node-size-half));
+}
+
+.e10, .e11, .e12, .e13 {
+  top: calc(25% + var(--node-size-half));
+}
+
+.e14, .e15, .e16, .e17 {
+  top: calc(50% + var(--node-size-half));
+}
+
+.e18, .e19, .e20, .e21 {
+  top: calc(75% + var(--node-size-half));
+}
+
+.e22, .e23, .e24, .e25 {
+  top: calc(100% + var(--node-size-half));
+}
+
+/* Rotations */
+.e6  { transform: rotate(10deg); }
+.e7  { transform: rotate(19.5deg); }
+.e8  { transform: rotate(28deg); }
+.e9  { transform: rotate(35.5deg); }
+
+.e10 { transform: rotate(-10deg); }
+.e11 { transform: rotate(10deg); }
+.e12 { transform: rotate(19.5deg); }
+.e13 { transform: rotate(28deg); }
+
+.e14 { transform: rotate(-19.5deg); }
+.e15 { transform: rotate(-10deg); }
+.e16 { transform: rotate(10deg); }
+.e17 { transform: rotate(19.5deg); }
+
+.e18 { transform: rotate(-28deg); }
+.e19 { transform: rotate(-19.5deg); }
+.e20 { transform: rotate(-10deg); }
+.e21 { transform: rotate(10deg); }
+
+.e22 { transform: rotate(-35.5deg); }
+.e23 { transform: rotate(-28deg); }
+.e24 { transform: rotate(-19.5deg); }
+.e25 { transform: rotate(-10deg); }
