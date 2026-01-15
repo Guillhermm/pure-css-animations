@@ -1,0 +1,469 @@
+:root {
+  /* Visual size of nodes proportional to state area */
+  --ac-size: 14px;
+  --al-size: 11px;
+  --am-size: 28px;
+  --ap-size: 13px;
+  --ba-size: 21px;
+  --ce-size: 14px;
+  --df-size: 10px;
+  --es-size: 11px;
+  --go-size: 19px;
+  --ma-size: 18px;
+  --mg-size: 20px;
+  --mt-size: 23px;
+  --ms-size: 20px;
+  --pa-size: 26px;
+  --pb-size: 11px;
+  --pe-size: 13px;
+  --pi-size: 16px;
+  --pr-size: 15px;
+  --rj-size: 11px;
+  --rn-size: 11px;
+  --ro-size: 14px;
+  --rr-size: 15px;
+  --rs-size: 17px;
+  --sc-size: 14px;
+  --se-size: 10px;
+  --sp-size: 16px;
+  --to-size: 17px;
+  /* Approximate coordinates of each Brazilian state */
+  --ac-x: 58px;  --ac-y: 280px;
+  --al-x: 530px; --al-y: 285px;
+  --ap-x: 320px; --ap-y: 120px;
+  --am-x: 150px; --am-y: 200px;
+  --ba-x: 465px; --ba-y: 330px;
+  --ce-x: 495px; --ce-y: 225px;
+  --df-x: 378px; --df-y: 376px;
+  --es-x: 480px; --es-y: 430px;
+  --go-x: 350px; --go-y: 390px;
+  --ma-x: 410px; --ma-y: 220px;
+  --mt-x: 275px; --mt-y: 340px;
+  --ms-x: 280px; --ms-y: 450px;
+  --mg-x: 425px; --mg-y: 420px;
+  --pa-x: 300px; --pa-y: 210px;
+  --pb-x: 540px; --pb-y: 250px;
+  --pr-x: 325px; --pr-y: 505px;
+  --pe-x: 535px; --pe-y: 270px;
+  --pi-x: 450px; --pi-y: 255px;
+  --rj-x: 450px; --rj-y: 475px;
+  --rn-x: 535px; --rn-y: 230px;
+  --rs-x: 300px; --rs-y: 585px;
+  --ro-x: 160px; --ro-y: 308px;
+  --rr-x: 185px; --rr-y: 115px;
+  --sc-x: 335px; --sc-y: 545px;
+  --se-x: 520px; --se-y: 300px;
+  --sp-x: 367px; --sp-y: 475px;
+  --to-x: 370px; --to-y: 290px;
+}
+
+/* Approximate traveling salesman route animation */
+@keyframes move {
+  0%   { top: var(--ac-y); left: var(--ac-x); }
+  4%   { top: var(--ro-y); left: var(--ro-x); }
+  8%   { top: var(--am-y); left: var(--am-x); }
+  12%  { top: var(--rr-y); left: var(--rr-x); }
+  16%  { top: var(--pa-y); left: var(--pa-x); }
+  20%  { top: var(--ap-y); left: var(--ap-x); }
+  24%  { top: var(--ma-y); left: var(--ma-x); }
+  28%  { top: var(--ce-y); left: var(--ce-x); }
+  32%  { top: var(--rn-y); left: var(--rn-x); }
+  36%  { top: var(--pb-y); left: var(--pb-x); }
+  40%  { top: var(--pe-y); left: var(--pe-x); }
+  44%  { top: var(--ba-y); left: var(--ba-x); }
+  48%  { top: var(--se-y); left: var(--se-x); }
+  52%  { top: var(--es-y); left: var(--es-x); }
+  56%  { top: var(--rj-y); left: var(--rj-x); }
+  60%  { top: var(--sp-y); left: var(--sp-x); }
+  64%  { top: var(--mg-y); left: var(--mg-x); }
+  68%  { top: var(--go-y); left: var(--go-x); }
+  72%  { top: var(--df-y); left: var(--df-x); }
+  76%  { top: var(--mt-y); left: var(--mt-x); }
+  80%  { top: var(--ms-y); left: var(--ms-x); }
+  84%  { top: var(--pr-y); left: var(--pr-x); }
+  88%  { top: var(--sc-y); left: var(--sc-x); }
+  92%  { top: var(--rs-y); left: var(--rs-x); }
+  96%  { top: var(--to-y); left: var(--to-x); }
+  100% { top: var(--pa-y); left: var(--pa-x); }
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Map container */
+.map {
+  position: relative;
+  width: 600px;
+  height: 700px;
+  border-radius: 10px;
+  overflow: hidden;
+  animation: mapBreathe 12s ease-in-out infinite;
+}
+
+/* Give some life to the whole map */
+@keyframes mapBreathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.05); }
+}
+
+/* State nodes */
+.state {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: #444;
+  box-shadow: 0 0 0 transparent;
+  z-index: 2;
+}
+
+/* Individual state sizes */
+.state.ac { --size: var(--ac-size); }
+.state.al { --size: var(--al-size); }
+.state.am { --size: var(--am-size); }
+.state.ap { --size: var(--ap-size); }
+.state.ba { --size: var(--ba-size); }
+.state.ce { --size: var(--ce-size); }
+.state.df { --size: var(--df-size); }
+.state.es { --size: var(--es-size); }
+.state.go { --size: var(--go-size); }
+.state.ma { --size: var(--ma-size); }
+.state.mg { --size: var(--mg-size); }
+.state.mt { --size: var(--mt-size); }
+.state.ms { --size: var(--ms-size); }
+.state.pa { --size: var(--pa-size); }
+.state.pb { --size: var(--pb-size); }
+.state.pe { --size: var(--pe-size); }
+.state.pi { --size: var(--pi-size); }
+.state.pr { --size: var(--pr-size); }
+.state.rj { --size: var(--rj-size); }
+.state.rn { --size: var(--rn-size); }
+.state.ro { --size: var(--ro-size); }
+.state.rr { --size: var(--rr-size); }
+.state.rs { --size: var(--rs-size); }
+.state.sc { --size: var(--sc-size); }
+.state.se { --size: var(--se-size); }
+.state.sp { --size: var(--sp-size); }
+.state.to { --size: var(--to-size); }
+
+/* Starting state highlight */
+.state.start {
+  background: gold;
+  box-shadow: 0 0 20px gold;
+}
+
+/* State positioning */
+.state.ac { top: var(--ac-y); left: var(--ac-x); }
+.state.al { top: var(--al-y); left: var(--al-x); }
+.state.ap { top: var(--ap-y); left: var(--ap-x); }
+.state.am { top: var(--am-y); left: var(--am-x); }
+.state.ba { top: var(--ba-y); left: var(--ba-x); }
+.state.ce { top: var(--ce-y); left: var(--ce-x); }
+.state.df { top: var(--df-y); left: var(--df-x); }
+.state.es { top: var(--es-y); left: var(--es-x); }
+.state.go { top: var(--go-y); left: var(--go-x); }
+.state.ma { top: var(--ma-y); left: var(--ma-x); }
+.state.mt { top: var(--mt-y); left: var(--mt-x); }
+.state.ms { top: var(--ms-y); left: var(--ms-x); }
+.state.mg { top: var(--mg-y); left: var(--mg-x); }
+.state.pa { top: var(--pa-y); left: var(--pa-x); }
+.state.pb { top: var(--pb-y); left: var(--pb-x); }
+.state.pr { top: var(--pr-y); left: var(--pr-x); }
+.state.pe { top: var(--pe-y); left: var(--pe-x); }
+.state.pi { top: var(--pi-y); left: var(--pi-x); }
+.state.rj { top: var(--rj-y); left: var(--rj-x); }
+.state.rn { top: var(--rn-y); left: var(--rn-x); }
+.state.rs { top: var(--rs-y); left: var(--rs-x); }
+.state.ro { top: var(--ro-y); left: var(--ro-x); }
+.state.rr { top: var(--rr-y); left: var(--rr-x); }
+.state.sc { top: var(--sc-y); left: var(--sc-x); }
+.state.se { top: var(--se-y); left: var(--se-x); }
+.state.sp { top: var(--sp-y); left: var(--sp-x); }
+.state.to { top: var(--to-y); left: var(--to-x); }
+
+/* State animations */
+.state {
+  animation:
+    glow 0.8s linear forwards,
+    breathe 5s ease-in-out infinite,
+    float 6s ease-in-out infinite;
+}
+
+/* Organic variation using nth-child */
+.state:nth-child(3n) { animation-duration: 2.4s; }
+.state:nth-child(4n) { animation-duration: 3.2s; }
+.state:nth-child(5n) { animation-duration: 4s; }
+
+/* Sequential glow delays */
+.state.start { animation-delay: 0s; }
+.state.am { animation-delay: 0.8s; }
+.state.rr { animation-delay: 1.6s; }
+.state.pa { animation-delay: 2.4s; }
+.state.ap { animation-delay: 3.2s; }
+.state.ma { animation-delay: 4s; }
+.state.pi { animation-delay: 4.8s; }
+.state.ce { animation-delay: 5.6s; }
+.state.rn { animation-delay: 6.4s; }
+.state.pb { animation-delay: 7.2s; }
+.state.pe { animation-delay: 8s; }
+.state.al { animation-delay: 8.8s; }
+.state.se { animation-delay: 9.6s; }
+.state.ba { animation-delay: 10.4s; }
+.state.es { animation-delay: 11.2s; }
+.state.mg { animation-delay: 12s; }
+.state.rj { animation-delay: 12.8s; }
+.state.sp { animation-delay: 13.6s; }
+.state.pr { animation-delay: 14.4s; }
+.state.sc { animation-delay: 15.2s; }
+.state.rs { animation-delay: 16s; }
+.state.ms { animation-delay: 16.8s; }
+.state.go { animation-delay: 17.6s; }
+.state.df { animation-delay: 18.4s; }
+.state.mt { animation-delay: 19.2s; }
+.state.to { animation-delay: 20s; }
+.state.ro { animation-delay: 20.8s; }
+
+/* Glow activation */
+@keyframes glow {
+  to {
+    background: #0ff;
+    box-shadow: 0 0 20px #0ff;
+  }
+}
+
+/* Breathing scale animation */
+@keyframes breathe {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 12px #0ff;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.25);
+    box-shadow: 0 0 22px #0ff;
+  }
+}
+
+/* Floating vertical motion */
+@keyframes float {
+  0%, 100% { margin-top: 0; }
+  50%      { margin-top: .125rem; }
+}
+
+/* Light beam connections */
+.line {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: cyan;
+  opacity: 0;
+  z-index: 1;
+  transform-origin: left center;
+  filter: drop-shadow(0 0 10px cyan);
+  animation: draw 0.8s linear forwards;
+}
+
+/* Beam growth animation */
+@keyframes draw {
+  to {
+    width: var(--length);
+    opacity: 1;
+  }
+}
+
+/* Beam thickness by distance */
+.line.short  { height: 2px; }
+.line.medium { height: 4px; }
+.line.long   { height: 7px; }
+
+/* Individual connections: position, rotation and length */
+.line.ac-am { 
+  top: var(--ac-y); left: var(--ac-x);
+  --length: 123px; transform: rotate(-42deg);
+  animation-delay: 0s;
+}
+ 
+.line.am-rr {
+  top: var(--am-y); left: var(--am-x);
+  --length: 95px; transform: rotate(-68deg);
+  animation-delay: 0.8s;
+}
+
+.line.rr-pa {
+  top: var(--rr-y); left: var(--rr-x);
+  --length: 150px; transform: rotate(40deg);
+  animation-delay: 1.6s;
+}
+
+.line.pa-ap {
+  top: var(--pa-y); left: var(--pa-x);
+  --length: 95px; transform: rotate(-78deg);
+  animation-delay: 2.4s;
+}
+
+.line.ap-ma {
+  top: var(--ap-y); left: var(--ap-x);
+  --length: 135px; transform: rotate(48deg);
+  animation-delay: 3.2s;
+}
+
+.line.ma-pi {
+  top: var(--ma-y); left: var(--ma-x);
+  --length: 55px;
+  transform: rotate(40deg);
+  animation-delay: 4s;
+}
+
+.line.pi-ce {
+  top: var(--pi-y); left: var(--pi-x);
+  --length: 55px;
+  transform: rotate(-35deg);
+  animation-delay: 4.8s;
+}
+
+.line.ce-rn {
+  top: var(--ce-y); left: var(--ce-x);
+  --length: 42px;
+  transform: rotate(6deg);
+  animation-delay: 5.6s;
+}
+
+.line.rn-pb {
+  top: var(--rn-y); left: var(--rn-x);
+  --length: 20px;
+  transform: rotate(75deg);
+  animation-delay: 6.4s;
+}
+
+.line.pb-pe {
+  top: var(--pb-y); left: var(--pb-x);
+  --length: 20px;
+  transform: rotate(105deg);
+  animation-delay: 7.2s;
+}
+
+.line.pe-al {
+  top: var(--pe-y); left: var(--pe-x);
+  --length: 15px;
+  transform: rotate(108deg);
+  animation-delay: 8s;
+}
+
+.line.al-se {
+  top: var(--al-y); left: var(--al-x);
+  --length: 20px;
+  transform: rotate(124deg);
+  animation-delay: 8.8s;
+}
+
+.line.se-ba {
+  top: var(--se-y); left: var(--se-x);
+  --length: 62px;
+  transform: rotate(152deg);
+  animation-delay: 9.6s;
+}
+
+.line.ba-es {
+  top: var(--ba-y); left: var(--ba-x);
+  --length: 100px;
+  transform: rotate(81deg);
+  animation-delay: 10.4s;
+}
+
+.line.es-mg {
+  top: var(--es-y); left: var(--es-x);
+  --length: 55px;
+  transform: rotate(190deg);
+  animation-delay: 11.2s;
+}
+
+.line.mg-rj {
+  top: var(--mg-y); left: var(--mg-x);
+  --length: 62px;
+  transform: rotate(65deg);
+  animation-delay: 12s;
+}
+
+.line.rj-sp {
+  top: var(--rj-y); left: var(--rj-x);
+  --length: 85px;
+  transform: rotate(180deg);
+  animation-delay: 12.8s;
+}
+
+.line.sp-pr {
+  top: var(--sp-y); left: var(--sp-x);
+  --length: 50px;
+  transform: rotate(145deg);
+  animation-delay: 13.6s;
+}
+
+.line.pr-sc {
+  top: var(--pr-y); left: var(--pr-x);
+  --length: 40px;
+  transform: rotate(75deg);
+  animation-delay: 14.4s;
+}
+
+.line.sc-rs {
+  top: var(--sc-y); left: var(--sc-x);
+  --length: 55px;
+  transform: rotate(132deg);
+  animation-delay: 15.2s;
+}
+
+.line.rs-ms {
+  top: var(--rs-y); left: var(--rs-x);
+  --length: 140px;
+  transform: rotate(-98deg);
+  animation-delay: 16s;
+}
+
+.line.ms-go {
+  top: var(--ms-y); left: var(--ms-x);
+  --length: 95px;
+  transform: rotate(318deg);
+  animation-delay: 16.8s;
+}
+
+.line.go-df {
+  top: var(--go-y); left: var(--go-x);
+  --length: 32px;
+  transform: rotate(-26deg);
+  animation-delay: 17.64s;
+}
+
+.line.df-mt {
+  top: var(--df-y); left: var(--df-x);
+  --length: 112px;
+  transform: rotate(201deg);
+  animation-delay: 18.4s;
+}
+
+.line.mt-to {
+  top: var(--mt-y); left: var(--mt-x);
+  --length: 110px;
+  transform: rotate(-29deg);
+  animation-delay: 19.2s;
+}
+
+.line.to-ro {
+  top: var(--to-y); left: var(--to-x);
+  --length: 214px;
+  transform: rotate(-184deg);
+  animation-delay: 20s;
+}
+
+.line.ro-ac { 
+  top: var(--ro-y); left: var(--ro-x); 
+  --length: 110px;
+  transform: rotate(195deg);
+  animation-delay: 20.8s;
+}
