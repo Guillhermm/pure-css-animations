@@ -47,6 +47,10 @@ No frameworks. No build tools. No dependencies.
   Animated tangram shapes that morph into multiple animal forms in a continuous loop.  
   **Path:** `animations/tangram-animals/`
 
+- **TSP Greedy Route (Brazil)**  
+  A pure CSS animated visualization of a greedy Traveling Salesman Problem route across Brazilian states.  
+  **Path:** `animations/tsp-greedy/`
+
 - **Wave**  
   A smooth, fluid wave animation using CSS keyframes and gradient effects.  
   **Path:** `animations/wave/`
