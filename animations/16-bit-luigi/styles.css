@@ -1,0 +1,100 @@
+:root {
+  --bit-size: .5rem;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #a589dd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bit-mapping {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  image-rendering: pixelated;
+}
+
+.bit {
+  width: var(--bit-size);
+  height: var(--bit-size);
+}
+
+.bit.black {
+  background: #000;
+}
+
+.bit.gray-1 {
+  background: #f0f0f0;
+}
+
+.bit.gray-2 {
+  background: #f7f7f7;
+}
+
+.bit.purple-dark {
+  background: #380078;
+}
+
+.bit.purple {
+  background: #7028f8;
+}
+
+.bit.purple-light {
+  background: #9868f8;
+}
+
+.bit.brown {
+  background: #854600;
+}
+
+.bit.brown-light {
+  background: #825200;
+}
+
+.bit.yellow-dark {
+  background: #aaa223;
+}
+
+.bit.yellow {
+  background: #fbf346;
+}
+
+.bit.yellow-light {
+  background: #fbeea8;
+}
+
+.bit.green-dark {
+  background: #005020;
+}
+
+.bit.green {
+  background: #00c058;
+}
+
+.bit.green-light {
+  background: #00f878;
+} 
+
+.bit.skin {
+  background: #f89028;
+}
+
+.bit.skin-light {
+  background: #f8c898;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --bit-size: .75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --bit-size: 1rem;
+  }
+}
