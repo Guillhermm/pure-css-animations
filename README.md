@@ -7,6 +7,14 @@ No frameworks. No build tools. No dependencies.
 
 ## Experiments
 
+- **16-bit Luigi**  
+  A pure CSS pixel art recreation of Luigi using grid-based pixel mapping and layered color palettes.  
+  **Path:** `animations/16-bit-luigi/`
+
+- **16-bit Super Mario**  
+  A pure CSS pixel art recreation of Super Mario inspired by classic 16-bit era sprites.  
+  **Path:** `animations/16-bit-super-mario/`
+
 - **Brazil Flag**  
   An interactive, animated representation of the Brazilian flag using pure HTML and CSS.  
   **Path:** `animations/brazil-flag/`
