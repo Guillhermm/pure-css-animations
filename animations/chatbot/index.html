@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pure CSS Chatbot Animation, by Guilherme Zeni</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="macbook-window">
+      <div class="window-header">
+        <div class="window-controls">
+          <span class="control close"></span>
+          <span class="control minimize"></span>
+          <span class="control maximize"></span>
+        </div>
+        <div class="window-title">Chatbot Assistant</div>
+      </div>
+      <div class="window-body">
+        <div class="chat-container">
+          <div class="chat-header">
+            <div class="chatbot-avatar">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="chatbot-info">
+              <h3>AI Assistant</h3>
+              <p>Online • Ready to help</p>
+            </div>
+            <div class="chat-status">
+              <span class="status-dot"></span>
+            </div>
+          </div>
+
+          <div class="chat-messages">
+            <div class="message bot">
+              <div class="message-content">
+                Hello! I'm your <strong>AI assistant</strong>. How can I help you today?
+              </div>
+              <div class="message-time">10:00 AM</div>
+            </div>
+
+            <div class="message user">
+              <div class="message-content">
+                Can you show me some CSS animations? It can be simple tools like chatbots...
+              </div>
+              <div class="message-time">10:01 AM</div>
+            </div>
+
+            <div class="message bot typing">
+              <div class="typing-indicator">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="input-hint">
+            <i class="fas fa-info-circle"></i> This is a visualization demo... input is disabled!
+          </div>
+        </div>
+      </div>
+
+      <div class="window-footer">
+        <div class="input-container">
+          <input id="form-message" type="text" placeholder="Type your message here..." disabled>
+          <button class="send-btn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="stats">
+      <span><i class="fas fa-bolt"></i> CSS Powered</span>
+      <span><i class="fas fa-code"></i> No JavaScript</span>
+      <span><i class="fas fa-heart"></i> Pure Animation</span>
+    </div>
+  </div>
+</body>
+
+</html>
