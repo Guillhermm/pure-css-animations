@@ -9,12 +9,6 @@ This project explores **conic gradients**, **blend modes**, and **multi-layered 
 
 ## Features
 
-- **Shortest Path Animation**: Visualizes node visits, edge checks, and updates distances dynamically.
-- **CSS-Only Implementation**: No JavaScript; all animations handled via `@keyframes` and `animation-delay`.
-- **Interactive Colors**: Nodes and edges change color when visited, current, or part of the shortest path.
-- **Responsive Layout**: Graph scales across devices using CSS transforms.
-- **Educational Visualization**: Highlights how Dijkstra’s algorithm progresses from start to target node.
-
 - **Pure CSS Animation**: Built entirely with HTML and CSS, no JavaScript involved.
 - **Conic Gradient Color Dynamics**: Each shuriken blade uses a conic gradient with continuous hue rotation for smooth chromatic transitions.
 - **Layered Motion System**: Five overlapping shurikens rotate at different speeds, directions, scales, and opacity cycles to create depth and visual complexity.
