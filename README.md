@@ -19,9 +19,17 @@ No frameworks. No build tools. No dependencies.
   An interactive, animated representation of the Brazilian flag using pure HTML and CSS.  
   **Path:** `animations/brazil-flag/`
 
+- **Chatbot**
+  A fully animated chatbot interface built entirely with HTML and CSS, featuring message bubbles, typing indicators, and UI micro-interactions.  
+  **Path:** `animations/chatbot/`
+
 - **Chess Animation (Fool’s Mate)**
   A CSS-only chessboard animation recreating the Fool’s Mate, the fastest possible checkmate in chess.  
   **Path:** `animations/chess-animation/`
+
+- **Chromatic Shurikens**
+  A vibrant, abstract CSS animation featuring rotating shuriken shapes with dynamic hue shifting and layered blend modes.  
+  **Path:** `animations/chromatic-shurikens/`
 
 - **Complete Bipartite Graph**
   A pure CSS animated visualization of a complete bipartite graph with glowing nodes and flowing edges.  
@@ -30,6 +38,10 @@ No frameworks. No build tools. No dependencies.
 - **Dark Theme**  
   A modern, CSS-only dark mode demo with a theme toggle implemented entirely with CSS variables.  
   **Path:** `animations/dark-theme/`
+
+- **Deathly Hallows**
+  A 3D-inspired, pure CSS recreation of the Deathly Hallows symbol using layered depth, metallic gradients, and perspective transforms.  
+  **Path:** `animations/deathly-hallows/`
 
 - **Dijkstra's Algorithm**  
   A CSS-only animated visualization of Dijkstra's shortest path algorithm in a weighted graph.  
