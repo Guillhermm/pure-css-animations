@@ -20,11 +20,11 @@ No frameworks. No build tools. No dependencies.
   **Path:** `animations/brazil-flag/`
 
 - **Chess Animation (Fool’s Mate)**
-  A CSS-only chessboard animation recreating the Fool’s Mate, the fastest possible checkmate in chess.
+  A CSS-only chessboard animation recreating the Fool’s Mate, the fastest possible checkmate in chess.  
   **Path:** `animations/chess-animation/`
 
 - **Complete Bipartite Graph**
-  A pure CSS animated visualization of a complete bipartite graph with glowing nodes and flowing edges.
+  A pure CSS animated visualization of a complete bipartite graph with glowing nodes and flowing edges.  
   **Path:** `animations/complete-bipartite-graph/`
 
 - **Dark Theme**  
