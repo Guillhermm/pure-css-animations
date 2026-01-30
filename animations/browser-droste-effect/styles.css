@@ -125,13 +125,27 @@ html, body {
 
 @media (min-width: 576px) {
   :root {
-    --scale-step: 0.925;
+    --scale-step: .925;
   }
 
   .browser {
     width: 90vmin;
     height: auto;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 11;
+  }
+
+  .message {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --scale-step: .9;
+  }
+
+  .browser {
+    width: 100vmin;
   }
 
   .message {
