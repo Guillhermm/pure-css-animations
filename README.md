@@ -19,6 +19,10 @@ No frameworks. No build tools. No dependencies.
   An interactive, animated representation of the Brazilian flag using pure HTML and CSS.  
   **Path:** `animations/brazil-flag/`
 
+- **Browser Droste Effect**
+  A pure CSS recursive browser animation inspired by the Droste effect, featuring nested windows with subtle motion, depth scaling, and organic drift.  
+  **Path:** `animations/browser-droste-effect/`
+
 - **Chatbot**
   A fully animated chatbot interface built entirely with HTML and CSS, featuring message bubbles, typing indicators, and UI micro-interactions.  
   **Path:** `animations/chatbot/`
@@ -62,6 +66,10 @@ No frameworks. No build tools. No dependencies.
 - **Pascal's Triangle**  
   A CSS-only animated visualization of Pascal's Triangle with pulsing and shimmer effects.  
   **Path:** `animations/pascals-triangle/`
+
+- **Street Fighter Game Over**
+  A CSS-only recreation of a classic Street Fighter–style game over screen, featuring an animated countdown, blinking “Press Start” prompt, pixel-based display, and retro arcade aesthetics.  
+  **Path:** `animations/street-fighter-game-over/`
 
 - **Tangram Animals**  
   Animated tangram shapes that morph into multiple animal forms in a continuous loop.  
