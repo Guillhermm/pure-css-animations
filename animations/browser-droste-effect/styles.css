@@ -1,5 +1,5 @@
 :root {
-  --scale-step: .99;
+  --scale-step: .95;
   --translate-max: .75rem;
   --rotate-max: 2deg;
 }
