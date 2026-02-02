@@ -1,0 +1,212 @@
+:root {
+  /* Control the animation speed here */
+  --step-duration: 2s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0b0f14;
+  color: #cfd8ff;
+  font-family: system-ui, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  max-width: 960px;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 26px);
+  gap: 4px;
+  padding: 20px;
+  background: #0f1622;
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px #1c2740,
+    0 20px 40px rgba(0, 0, 0, .6);
+}
+
+.grid span {
+  width: 26px;
+  height: 26px;
+  background: #fff;
+  border-radius: 4px;
+  opacity: .35;
+  position: relative;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+/* Grid hover subtle zoom */
+.grid span:hover {
+  transform: scale(1.15);
+  opacity: .8;
+}
+
+/* =========================================================
+    BRESENHAM PIXEL ANIMATION (DO NOT CHANGE)
+    ========================================================= */
+
+/*
+  These 8 grid spans represent the Bresenham line from (1,1)
+  to (8,6) based on your corrected algorithm.
+  We animate these with delays using --step-duration.
+*/
+.grid span:nth-child(12),
+.grid span:nth-child(23),
+.grid span:nth-child(24),
+.grid span:nth-child(35),
+.grid span:nth-child(46),
+.grid span:nth-child(57),
+.grid span:nth-child(58),
+.grid span:nth-child(69) {
+  animation: plot .8s steps(1) forwards;
+  animation-delay: var(--t, 0s);
+}
+
+/* Syncing step durations */
+.grid span:nth-child(12) { --t: calc(1 * var(--step-duration)); }
+.grid span:nth-child(23) { --t: calc(2 * var(--step-duration)); }
+.grid span:nth-child(24) { --t: calc(3 * var(--step-duration)); }
+.grid span:nth-child(35) { --t: calc(4 * var(--step-duration)); }
+.grid span:nth-child(46) { --t: calc(5 * var(--step-duration)); }
+.grid span:nth-child(57) { --t: calc(6 * var(--step-duration)); }
+.grid span:nth-child(58) { --t: calc(7 * var(--step-duration)); }
+.grid span:nth-child(69) { --t: calc(8 * var(--step-duration)); }
+
+/* Plotted pixel appearance */
+@keyframes plot {
+  to {
+    background: #4da3ff;
+    opacity: 1;
+    box-shadow:
+      0 0 0 1px #6bb7ff,
+      0 0 12px rgba(77, 163, 255, .8);
+  }
+}
+
+/* Start / end markers */
+.grid span:nth-child(12)::before,
+.grid span:nth-child(69)::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  left: -7px;
+  width: 10px;
+  height: 10px;
+  background: #ff6b6b;
+  border-radius: 50%;
+}
+
+.terminal {
+  max-width: 440px;
+  padding: 20px;
+  background: #0f1622;
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px #1c2740,
+    0 20px 40px rgba(0, 0, 0, .6);
+}
+
+.label {
+  font-weight: bold;
+  margin-bottom: .5rem;
+  color: #6bb7ff;
+}
+
+/* “Live typing” effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: calc(var(--chars) * 1ch); }
+}
+
+@keyframes blink {
+  50% {
+    border-right: 2px solid #4da3ff;
+  }
+  0%, 100% { border-color: transparent }
+}
+
+.terminal .questions,
+.terminal .constants > *,
+.terminal .variables > * {
+  --duration: calc((var(--chars) / 30) * 1s);
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation:
+    typing var(--duration) steps(var(--chars)) forwards,
+    blink 1s step-end forwards;
+  animation-delay: var(--t, 0s);
+}
+
+/* Typing timings */
+.questions        { --chars: 62; --t: calc(0 * var(--step-duration)); }
+.constants .label { --chars: 10; --t: calc(1 * var(--step-duration)); }
+.dx               { --chars: 22; --t: calc(2 * var(--step-duration)); }
+.dy               { --chars: 22; --t: calc(3 * var(--step-duration)); }
+.dy-double        { --chars: 30; --t: calc(4 * var(--step-duration)); }
+.dy-dx            { --chars: 18; --t: calc(5 * var(--step-duration)); }
+.dy-dx-double     { --chars: 36; --t: calc(6 * var(--step-duration)); }
+
+.variables .label { --chars: 9; --t: calc(7 * var(--step-duration)); }
+.variables .x     { --chars: 1;  --t: calc(8 * var(--step-duration)); }
+.variables .y     { --chars: 10; --t: calc(9 * var(--step-duration)); }
+.variables .D     { --chars: 34; --t: calc(10 * var(--step-duration)); }
+
+/* =========================================================
+    TEST TABLE TO THE RIGHT
+    ========================================================= */
+
+.test-table {
+  margin-top: 24px;
+  padding: 20px;
+  background: #0f1622;
+  border-radius: 12px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  text-align: center;
+}
+
+/* Fade in + highlight row */
+.row:not(.title) {
+  margin-top: 1rem;
+  opacity: .35;
+  animation: row-focus .3s forwards;
+  animation-delay: var(--t);
+}
+
+@keyframes row-focus {
+  to {
+    opacity: 1;
+    background: rgba(77, 163, 255, .15);
+  }
+}
+
+/* Sync rows with the pixel animation */
+.test-table .row:nth-child(2) { --t: calc(1 * var(--step-duration)); }
+.test-table .row:nth-child(3) { --t: calc(2 * var(--step-duration)); }
+.test-table .row:nth-child(4) { --t: calc(3 * var(--step-duration)); }
+.test-table .row:nth-child(5) { --t: calc(4 * var(--step-duration)); }
+.test-table .row:nth-child(6) { --t: calc(5 * var(--step-duration)); }
+.test-table .row:nth-child(7) { --t: calc(6 * var(--step-duration)); }
+.test-table .row:nth-child(8) { --t: calc(7 * var(--step-duration)); }
+.test-table .row:nth-child(9) { --t: calc(8 * var(--step-duration)); }
