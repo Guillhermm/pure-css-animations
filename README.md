@@ -5,6 +5,10 @@ A collection of small animations and visual experiments built using only HTML an
 Each animation/experiment is self-contained and lives in its own directory, and can be run independently.  
 No frameworks. No build tools. No dependencies.
 
+## Live Demos
+
+[Visit Hub Web Page](https://guillhermm.github.io/pure-css-animations/) to see all animations.
+
 ## Experiments
 
 - **16-bit Luigi**  
@@ -87,3 +91,7 @@ No frameworks. No build tools. No dependencies.
 
 These projects are experimental and intended for learning and exploration.  
 They are not production-ready components but demonstrate CSS animation techniques, interactive visuals, and creative UI patterns.
+
+## License
+
+MIT License - See [LICENSE](LICENSE) file for details.
